@@ -15,7 +15,7 @@ Follow these steps:
    - **The user described a goal:** do that.
    - **No goal given and no workflows exist:** ask the user which one they want, offering:
      - **Validate** (recommended): on push and pull request, check that `index.html` is sound — see step 3.
-     - **Deploy to GitHub Pages:** publish `index.html` as a static site with `actions/upload-pages-artifact` and `actions/deploy-pages`.
+     - **Deploy to GitHub Pages:** hand off to the steps in `.claude/commands/update-github-pages.md`.
      - **Both.**
    - **No goal given and workflows exist:** summarize what they do and ask what to change.
    When editing, change only what was asked and keep the rest of the file as it is.
