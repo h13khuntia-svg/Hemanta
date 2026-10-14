@@ -17,7 +17,9 @@ Follow these steps:
 
 2. **Check the working tree.** Run `git status` and `git diff --stat`. Show the user what will be committed. Never commit secrets, `.env` files, or credentials. If any appear, stop and ask.
 
-3. **Sanity-check `index.html` before pushing** (see CLAUDE.md):
+3. **Security scan — required before uploading.** Run every step in `.claude/commands/security-scan.md` against what will be pushed. If the verdict is **FAIL**, stop: do not push until the user fixes the findings or explicitly accepts the risk for each one.
+
+   Also sanity-check `index.html` (see CLAUDE.md):
    - the inline `<script>` is syntactically valid JavaScript
    - every static `getElementById("...")` call resolves to an `id="..."` in the HTML
    If either check fails, report it and ask whether to push anyway.
@@ -33,4 +35,4 @@ Follow these steps:
    - If the push is rejected because the remote has newer commits, run `git pull --no-rebase <remote> <branch>`, resolve conflicts if needed, and push again.
    - If authentication fails, tell the user and explain they need GitHub access to that repo. Don't try to work around it.
 
-7. **Report** the repository URL, branch, and pushed commit hash (`git rev-parse --short HEAD`). Do not open a pull request unless the user asks for one.
+7. **Report** the security scan verdict, the repository URL, branch, and pushed commit hash (`git rev-parse --short HEAD`). Do not open a pull request unless the user asks for one.

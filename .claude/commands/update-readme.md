@@ -27,4 +27,4 @@ Follow these steps:
 
 4. **Respect the project rules in `CLAUDE.md`.** The README must not suggest adding a framework, build step, backend, or persistence, and must not include real email addresses or secrets beyond what's already in the code.
 
-5. **Show the result.** Summarize what you created or changed. Ask the user before committing; if they agree, commit with a clear message (e.g. "Add README" or "Update README"). Push only if the user asks, or suggest `/push-to-github`.
+5. **Show the result.** Summarize what you created or changed. Ask the user before committing; if they agree, commit with a clear message (e.g. "Add README" or "Update README"). Push only if the user asks, or suggest `/push-to-github`. Before any push, run the security scan in `.claude/commands/security-scan.md` (`/push-to-github` does this automatically) and don't push if it fails.

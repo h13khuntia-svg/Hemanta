@@ -28,8 +28,8 @@ Follow these steps:
 
 5. **Custom domain (only if requested).** Create or update a `CNAME` file containing just the domain, and tell the user to add a DNS `CNAME` record pointing to `<owner>.github.io` (or `A` records for an apex domain) and to tick **Enforce HTTPS** once the certificate is issued.
 
-6. **Check your work.** Validate the YAML (e.g. `python3 -c "import yaml,sys; yaml.safe_load(open(sys.argv[1]))" .github/workflows/pages.yml` if PyYAML is available) and confirm `index.html` is at the repo root.
+6. **Check your work.** Run the security scan in `.claude/commands/security-scan.md` — everything in `_site/` becomes public on the internet, so a **FAIL** verdict blocks the deploy. Validate the YAML (e.g. `python3 -c "import yaml,sys; yaml.safe_load(open(sys.argv[1]))" .github/workflows/pages.yml` if PyYAML is available) and confirm `index.html` is at the repo root.
 
 7. **Tell the user the one manual step:** in the repo go to **Settings → Pages → Build and deployment → Source** and choose **GitHub Actions**. The first deploy runs on the next push to the chosen branch (or from the **Actions** tab via **Run workflow**).
 
-8. **Show the result.** Summarize what you created or changed and give the expected site URL. Ask before committing; push only if the user asks, or suggest `/push-to-github`. Note that pushing files under `.github/workflows/` needs a GitHub token with the `workflow` scope, and that GitHub Pages on a private repo requires a paid GitHub plan.
+8. **Show the result.** Summarize what you created or changed and give the expected site URL. Ask before committing; push only if the user asks, or suggest `/push-to-github`. Before any push, run the security scan in `.claude/commands/security-scan.md` (`/push-to-github` does this automatically) and don't push if it fails. Note that pushing files under `.github/workflows/` needs a GitHub token with the `workflow` scope, and that GitHub Pages on a private repo requires a paid GitHub plan.
